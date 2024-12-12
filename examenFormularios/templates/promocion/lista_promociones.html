@@ -1,0 +1,15 @@
+
+<!-- templates/promocion/lista_promociones.html -->
+{% extends "estructura/principal.html" %}
+{% block contenido %}
+<h1 class="display-3">Lista de promociones</h1>
+<div class="row">
+    {% for promocion in promociones %}
+    <div class="col-sm-4 mb-2">
+        {% include 'promocion/promocion.html' %}
+    </div>
+    {% empty %}
+    <h1>Lo sentimos pero no hay promociones</h1>
+    {% endfor %}
+</div>
+{% endblock %}

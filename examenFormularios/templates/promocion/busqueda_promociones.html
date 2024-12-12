@@ -1,0 +1,28 @@
+{% extends 'estructura/principal.html' %}
+
+{% block contenido %}
+<div class="container mt-4">
+	<h2>Búsqueda Avanzada de Promociones</h2>
+    
+	<form method="get" class="mb-4">
+    	{% for field in form %}
+    	<div class="mb-3">
+        	<label class="form-label">{{ field.label }}</label>
+        	{{ field }}
+    	</div>
+    	{% endfor %}
+    	<button type="submit" class="btn btn-primary">Buscar</button>
+	</form>
+
+	<h3>Resultados</h3>
+	{% if promociones %}
+    	<div class="row">
+    	{% for promocion in promociones %}
+        	{% include "promocion/promocion.html" %}
+    	{% endfor %}
+    	</div>
+	{% else %}
+    	<p>No se encontraron promociones con los criterios especificados.</p>
+	{% endif %}
+</div>
+{% endblock %}

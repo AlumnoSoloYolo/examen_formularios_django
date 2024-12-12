@@ -1,0 +1,28 @@
+<div class="col-md-4 mb-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ promocion.nombre }}</h5>
+            <p class="card-text">{{ promocion.descripcion }}</p>
+            <p>Descuento: {{ promocion.descuento }}%</p>
+            <p>Fecha fin: {{ promocion.fin_promo }}</p>
+            <p>Estado: {% if promocion.activa %}Activa{% else %}Inactiva{% endif %}</p>
+        </div>
+        <div class="row btn-group">
+            <div class="mb-2">
+                <button type="button" 
+                        class="btn btn-outline-primary"> 
+                        <a href="{% url 'promocion_editar' promocion.id %}" ><span>editar</span></a>
+                </button>
+            </div>
+            <div class="mb-2">
+                <form action = "{% url 'promocion_eliminar' promocion.id %}" method = "post"> 
+                    {% csrf_token %}
+                    <button class="btn btn-danger" onclick="return confirm('¿Estás seguro? Esta acción no se puede deshacer.')" type="submit">
+                        <span>Eliminar</span>
+                    </button> 
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
